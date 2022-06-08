@@ -8,13 +8,11 @@ import matplotlib.pyplot as plt
 import json
 import matplotlib.dates as mdates
 
-# Set structure of the site
 header = st.container()
 crisis_indicator = st.container()
 dataset = st.container()
 
 
-# Cache selected dataset
 @st.cache
 def get_data(filename):
     stock_data = pd.read_csv(filename, sep=',')
@@ -32,7 +30,21 @@ with header:
     st.text('')
 
 
+with crisis_indicator:
+    # st.header("1. Let's analyze the amman stock exchange indexes")
 
+    st.text('')
+
+    # cp = pd.read_csv('data/crisis_probability.txt', sep=" ", header=None)
+    # x = cp.values[0]
+    # if x == 1:
+    #     st.success(
+    #         'The probability of a severe econonomic crisis within the next six months is minimal')
+    # else:
+    #     st.error(
+    #         '! The probability of a severe econonomic crisis within the next six months is substantial !')
+
+    # st.text('')
 
 
 with dataset:
@@ -40,7 +52,7 @@ with dataset:
     st.text('')
 
     sel_col, disp_col = st.columns(2)
-    region = sel_col.selectbox('WHich index you want to analyze', options=[
+    region = sel_col.selectbox('Which region do you want to analyze?', options=[
                                'General Index', 'Financials', 'Services', 'Industries'], index=0)
     quartile = None
     if region == 'Financials':
@@ -51,7 +63,6 @@ with dataset:
     st.text('')
     st.text('')
 
-    # Create Refrence for a text element to display the loading message
     loading_text = st.text('Loading...')
 
     stock_data = pd.read_excel(
@@ -87,9 +98,6 @@ with dataset:
                     ObjectValues[key] = k
         new_data.append(ObjectValues)
 
-        # with open('json_data.json', 'w') as f:
-        #     json.dump(new_data, f)
-
     DataFrame = pd.DataFrame(
         new_data, columns=['Date', 'General Index',
                            'Financials',
@@ -116,7 +124,6 @@ with dataset:
         DataFrame.plot(x='Date', y=[
             'General Index',
         ],
-            # kind='line',
             figsize=(40, 20),
             grid=True,
             title='Index',
@@ -129,7 +136,6 @@ with dataset:
         DataFrame.plot(x='Date', y=[
             'Services',
         ],
-            # kind='line',
             figsize=(40, 20),
             grid=True,
             title='Index',
@@ -141,7 +147,6 @@ with dataset:
         DataFrame.plot(x='Date', y=[
             'Industries',
         ],
-            # kind='line',
             figsize=(40, 20),
             grid=True,
             title='Index',
@@ -155,7 +160,6 @@ with dataset:
                 'Financials',
                 'Banks'
             ],
-                # kind='line',
                 figsize=(40, 20),
                 grid=True,
                 title='Index',
@@ -167,7 +171,6 @@ with dataset:
                 'Financials',
                 'Financial Services'
             ],
-                # kind='line',
                 figsize=(40, 20),
                 grid=True,
                 title='Index',
@@ -179,7 +182,6 @@ with dataset:
                 'Financials',
                 'Real Estate'
             ],
-                # kind='line',
                 figsize=(40, 20),
                 grid=True,
                 title='Index',
@@ -194,7 +196,6 @@ with dataset:
                 'Real Estate',
                 'Insurance'
             ],
-                # kind='line',
                 figsize=(40, 20),
                 grid=True,
                 title='Index',
@@ -206,7 +207,6 @@ with dataset:
                 'Financials',
                 'Insurance'
             ],
-                # kind='line',
                 figsize=(40, 20),
                 grid=True,
                 title='Index',
@@ -218,7 +218,6 @@ with dataset:
                 'Financials',
                 'Insurance'
             ],
-                # kind='line',
                 figsize=(40, 20),
                 grid=True,
                 title='Index',
@@ -229,7 +228,6 @@ with dataset:
             DataFrame.plot(x='Date', y=[
                 'Financials',
             ],
-                # kind='line',
                 figsize=(40, 20),
                 grid=True,
                 title='Index',
