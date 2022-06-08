@@ -4,3 +4,4 @@ plotly
 streamlit
 protobuf
 matplotlib
+openpyxl
