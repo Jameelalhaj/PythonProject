@@ -52,7 +52,7 @@ with dataset:
     st.text('')
 
     sel_col, disp_col = st.columns(2)
-    region = sel_col.selectbox('Which region do you want to analyze?', options=[
+    region = sel_col.selectbox('Which index do you want to analyze?', options=[
                                'General Index', 'Financials', 'Services', 'Industries'], index=0)
     quartile = None
     if region == 'Financials':
