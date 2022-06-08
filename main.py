@@ -36,7 +36,7 @@ with header:
 
 
 with dataset:
-    st.header("2. Let's analyze the amman stock exchange indexes")
+    st.header("1. Let's analyze the amman stock exchange indexes")
     st.text('')
 
     sel_col, disp_col = st.columns(2)
